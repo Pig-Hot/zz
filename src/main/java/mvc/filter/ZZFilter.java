@@ -22,11 +22,7 @@ public class ZZFilter implements Filter {
         String paramName = filterConfig.getInitParameter("initParam");
         try {
             config = (ZZConfig) Class.forName(paramName).newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         if (config != null) {
@@ -42,28 +38,28 @@ public class ZZFilter implements Filter {
         /*设置编码格式*/
         request.setCharacterEncoding(ZZConfig.CONSTANT.getEncoding());
         response.setCharacterEncoding(ZZConfig.CONSTANT.getEncoding());
-        response.setContentType("text/html;"+ZZConfig.CONSTANT.getEncoding());
-        String result[] = UrlKit.getUriTail(request.getRequestURI(),request.getContextPath());
-        //System.out.println("route: " + result[0] + " method: " + result[1]);
+        response.setContentType("text/html;" + ZZConfig.CONSTANT.getEncoding());
+        String result[] = UrlKit.getUriTail(request.getRequestURI(), request.getContextPath());
+        System.out.println("route: " + result[0] + " method: " + result[1]);
         int index = request.getRequestURI().indexOf(".");
-        if(index==-1){
+        if (index == -1) {
             Class controller = ZZConfig.CONSTANT.getRoute(result[0]);
-            if(controller==null && !result[0].equals("/")){
+            if (controller == null && !result[0].equals("/")) {
                 try {
                     throw new RuntimeException("该Controller不存在");
                 } catch (RuntimeException e) {
                     e.printStackTrace();
                 }
-            }else {
-                config.getActionHandle().handle(result[1],controller,request,response);
+            } else {
+                config.getActionHandle().handle(result[1], controller, request, response);
             }
-        }else {
-            request.getRequestDispatcher("/WEB-INF/views" + result[0]).forward(request,response);
+        } else {
+            request.getRequestDispatcher("/WEB-INF/views" + result[0]).forward(request, response);
         }
     }
 
     public void destroy() {
         //销毁
-        System.out.println("zz框架被销毁");
+
     }
 }

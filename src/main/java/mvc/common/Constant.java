@@ -5,6 +5,7 @@ import sun.dc.pr.PRError;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * ZZ框架信息库
@@ -15,15 +16,34 @@ public class Constant {
     private String encoding = "utf-8";
 
     //路由信息
-    private Map<String, Class> routeMap = new HashMap<String, Class>();
+    private static Map<String, Class> routeMap = new ConcurrentHashMap<>();
+
+    //Bean信息
+    private static Map<String, Object> beanMap = new ConcurrentHashMap<>();
 
     /*得到一个Controller*/
     public Class getRoute(String route) {
         return routeMap.get(route);
     }
 
+    public Object getBean(String string) {
+        return beanMap.get(string);
+    }
+
+    public void setBean(String string, Object object) {
+        beanMap.put(string, object);
+    }
+
+    public static Map<String, Object> getBeanMap() {
+        return beanMap;
+    }
+
+    public static void setBeanMap(Map<String, Object> beanMap) {
+        Constant.beanMap = beanMap;
+    }
+
     /*设置Controller*/
-    public void setRoute(String route, Class<? extends ZZController>  controller) {
+    public void setRoute(String route, Class<? extends ZZController> controller) {
         routeMap.put(route, controller);
     }
 

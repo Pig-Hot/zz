@@ -1,6 +1,7 @@
 package mvc.config;
 
 import mvc.common.Constant;
+import mvc.common.utils.Scan;
 import mvc.filter.handle.ActionHandle;
 
 /**
@@ -11,12 +12,12 @@ public abstract class ZZConfig {
 
     public static Constant CONSTANT = new Constant();
     private ActionHandle actionHandle = new ActionHandle();
-    public static BeanFactory beanFactory = new BeanFactory();
 
     //初始化参数
     public void init() {
         setInitParam(CONSTANT);
         setRoute(CONSTANT);
+        Scan.scan(CONSTANT);
     }
 
     public abstract void setInitParam(Constant constant);
@@ -31,4 +32,13 @@ public abstract class ZZConfig {
         return actionHandle;
     }
 
+    public static Object createSimpleBean(Class clazz) {
+        Object obj = null;
+        try {
+            obj = clazz.newInstance();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return obj;
+    }
 }

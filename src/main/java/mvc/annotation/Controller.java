@@ -8,8 +8,8 @@ import java.lang.annotation.Target;
 /**
  * Created by zhuran on 2019/1/14 0014
  */
-@Target(ElementType.METHOD)
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Aop {
-    Class interceptor();
+public @interface Controller {
+    String path();
 }
