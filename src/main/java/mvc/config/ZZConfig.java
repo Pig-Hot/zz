@@ -1,7 +1,6 @@
 package mvc.config;
 
 import mvc.common.Constant;
-import mvc.controller.ext.MyController;
 import mvc.filter.handle.ActionHandle;
 
 /**
@@ -12,6 +11,7 @@ public abstract class ZZConfig {
 
     public static Constant CONSTANT = new Constant();
     private ActionHandle actionHandle = new ActionHandle();
+    public static BeanFactory beanFactory = new BeanFactory();
 
     //初始化参数
     public void init() {
@@ -30,4 +30,5 @@ public abstract class ZZConfig {
     public ActionHandle getActionHandle() {
         return actionHandle;
     }
+
 }

@@ -1,5 +1,6 @@
-package mvc.controller.ext;
+package test;
 
+import mvc.annotation.Aop;
 import mvc.controller.ZZController;
 import mvc.modle.User;
 
@@ -7,7 +8,10 @@ import mvc.modle.User;
 /**
  * Created by zhuran on 2019/1/9 0009
  */
+
 public class MyController extends ZZController {
+
+    @Aop(interceptor = MyIntercept.class)
     public void index() {
         System.out.println("index");
     }

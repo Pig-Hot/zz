@@ -9,7 +9,7 @@
         <filter-class>mvc.filter.ZZFilter</filter-class>
         <init-param>
             <param-name>initParam</param-name>
-            <param-value>mvc.config.ext.MyConfig</param-value>
+            <param-value>test.MyConfig</param-value>
         </init-param>
     </filter>
     <filter-mapping>

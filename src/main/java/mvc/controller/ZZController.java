@@ -1,9 +1,13 @@
 package mvc.controller;
 
+import mvc.common.utils.MapKit;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by zhuran on 2019/1/9 0009
@@ -58,5 +62,19 @@ public class ZZController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Map<String,String> getMap(){
+        Map<String, String[]> map = request.getParameterMap();
+        Map<String,String> _map = new HashMap<>();
+        for (String s:map.keySet()){
+            String[] v = map.get(s);
+            _map.put(s,v[0]);
+        }
+        return _map;
+    }
+
+    public Object getObject(Class clazz){
+        return MapKit.map2Object(getMap(),clazz);
     }
 }

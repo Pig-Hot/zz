@@ -1,8 +1,8 @@
-package mvc.config.ext;
+package test;
 
 import mvc.common.Constant;
 import mvc.config.ZZConfig;
-import mvc.controller.ext.MyController;
+import test.MyController;
 
 /**
  * Created by zhuran on 2019/1/9 0009
