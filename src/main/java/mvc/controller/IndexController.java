@@ -6,7 +6,7 @@ import mvc.annotation.Controller;
 /**
  * Created by zhuran on 2019/1/14 0014
  */
-@Controller(path = "/")
+@Controller(path = "/", name = "IndexController")
 public class IndexController extends ZZController {
 
     public void index() {

@@ -8,9 +8,8 @@ import java.lang.annotation.Target;
 /**
  * Created by zhuran on 2019/1/14 0014
  */
-@Target(ElementType.TYPE)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Controller {
-    String path();
-    String name();
+public @interface Sql {
+    String sql();
 }

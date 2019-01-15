@@ -14,7 +14,7 @@ public class MapKit {
 
     public static Map<String, String> getSetMethod(Class clazz) {
         Method[] methods = clazz.getMethods();
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, String> map = new HashMap<>();
         try {
             Object obj = clazz.newInstance();
         } catch (Exception e) {
@@ -77,6 +77,10 @@ public class MapKit {
                         break;
                     case "Double":
                         method = clazz.getMethod(methodName, Double.class);
+                        method.invoke(obj, (Double) map.get(object));
+                        break;
+                    case "Object":
+                        method = clazz.getMethod(methodName, Object.class);
                         method.invoke(obj, (Double) map.get(object));
                         break;
                 }

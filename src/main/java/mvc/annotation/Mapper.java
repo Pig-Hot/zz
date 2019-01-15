@@ -10,7 +10,6 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Controller {
-    String path();
-    String name();
+public @interface Mapper {
+
 }

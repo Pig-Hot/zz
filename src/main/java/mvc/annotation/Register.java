@@ -6,11 +6,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by zhuran on 2019/1/14 0014
+ * Created by zhuran on 2019/1/15 0015
  */
-@Target(ElementType.TYPE)
+@Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Controller {
-    String path();
-    String name();
+public @interface Register {
+
 }

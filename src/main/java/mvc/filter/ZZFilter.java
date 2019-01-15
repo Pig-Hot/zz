@@ -2,6 +2,7 @@ package mvc.filter;
 
 import mvc.common.utils.UrlKit;
 import mvc.config.ZZConfig;
+import mvc.factory.BeanFactory;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +44,7 @@ public class ZZFilter implements Filter {
         System.out.println("route: " + result[0] + " method: " + result[1]);
         int index = request.getRequestURI().indexOf(".");
         if (index == -1) {
-            Class controller = ZZConfig.CONSTANT.getRoute(result[0]);
+            Class controller = BeanFactory.getRoute(result[0]).getClass();
             if (controller == null && !result[0].equals("/")) {
                 try {
                     throw new RuntimeException("该Controller不存在");

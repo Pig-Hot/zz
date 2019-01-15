@@ -1,7 +1,8 @@
 package mvc.config;
 
 import mvc.common.Constant;
-import mvc.common.utils.Scan;
+import mvc.factory.BeanFactory;
+import mvc.factory.ScanRegister;
 import mvc.filter.handle.ActionHandle;
 
 /**
@@ -17,7 +18,9 @@ public abstract class ZZConfig {
     public void init() {
         setInitParam(CONSTANT);
         setRoute(CONSTANT);
-        Scan.scan(CONSTANT);
+        BeanFactory.init();
+        ScanRegister.init();
+//        Scan.scan(CONSTANT);
     }
 
     public abstract void setInitParam(Constant constant);
